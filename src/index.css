@@ -1,105 +1,428 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Barlow:wght@400;500;600&family=IBM+Plex+Mono:wght@300;400;500;600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* ═══════════════════════════════════════════════════════
+   LIVEBET — Design System
+   Fast. Data-rich. Trading-terminal energy.
+   ═══════════════════════════════════════════════════════ */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* ── Core Surfaces ── */
+    --background: 0 0% 7%;            /* #121212 dark slate */
+    --surface: 220 74% 8%;            /* deep navy surface */
+    --surface-card: 220 50% 12%;      /* card background */
+    --surface-raised: 220 40% 16%;    /* raised element */
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    /* ── Brand ── */
+    --navy: 220 74% 15%;              /* #0A1F44 */
+    --blue: 210 77% 51%;              /* #1E88E5 electric blue */
+    --yellow: 50 100% 50%;            /* #FFD400 odds highlight */
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    /* ── Semantic ── */
+    --success: 145 63% 49%;           /* #2ECC71 */
+    --loss: 6 78% 57%;                /* #E74C3C */
+    --warning: 38 92% 50%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* ── Text ── */
+    --foreground: 210 20% 92%;        /* near-white primary */
+    --muted-foreground: 215 15% 55%;  /* secondary labels */
+    --dim-foreground: 215 10% 35%;    /* very dim */
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* ── Interactive ── */
+    --primary: 210 77% 51%;           /* electric blue */
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 210 77% 58%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* ── Structure ── */
+    --border: 220 30% 20%;
+    --border-bright: 210 77% 45%;
+    --input: 220 50% 12%;
+    --ring: 210 77% 51%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* ── Aliases expected by shadcn ── */
+    --card: 220 50% 12%;
+    --card-foreground: 210 20% 92%;
+    --popover: 220 50% 12%;
+    --popover-foreground: 210 20% 92%;
+    --secondary: 220 40% 16%;
+    --secondary-foreground: 210 20% 92%;
+    --muted: 220 40% 16%;
+    --accent: 220 40% 20%;
+    --accent-foreground: 210 20% 92%;
+    --destructive: 6 78% 57%;
+    --destructive-foreground: 0 0% 100%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --radius: 0.25rem;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
-
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
+    /* ── Sidebar ── */
+    --sidebar-background: 220 74% 8%;
+    --sidebar-foreground: 210 20% 92%;
+    --sidebar-primary: 210 77% 51%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-accent: 220 40% 16%;
+    --sidebar-accent-foreground: 210 20% 92%;
+    --sidebar-border: 220 30% 20%;
+    --sidebar-ring: 210 77% 51%;
   }
 }
 
 @layer base {
   * {
     @apply border-border;
+    box-sizing: border-box;
+  }
+
+  html {
+    font-feature-settings: "tnum" 1, "lnum" 1;
+    scroll-behavior: smooth;
   }
 
   body {
-    @apply bg-background text-foreground;
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: 'Barlow', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
   }
+
+  /* Odds, scores, large data values */
+  .font-condensed {
+    font-family: 'Barlow Condensed', sans-serif;
+  }
+
+  /* Technical labels, timestamps, IDs */
+  .font-mono {
+    font-family: 'IBM Plex Mono', monospace;
+  }
+}
+
+/* ── Scrollbars ── */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: hsl(var(--surface)); }
+::-webkit-scrollbar-thumb { background: hsl(var(--border)); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: hsl(var(--blue)); }
+
+@layer components {
+
+  /* ── ODDS BUTTON ── */
+  .odds-btn {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 0.02em;
+    color: hsl(var(--foreground));
+    background: hsl(var(--surface-card));
+    border: 1px solid hsl(var(--border));
+    padding: 0.45rem 0.8rem;
+    cursor: pointer;
+    transition: all 0.12s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.05rem;
+    min-width: 5rem;
+    border-radius: var(--radius);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .odds-btn:hover {
+    border-color: hsl(var(--blue));
+    background: hsl(var(--surface-raised));
+    color: hsl(var(--yellow));
+  }
+
+  .odds-btn.selected {
+    background: hsl(var(--blue));
+    border-color: hsl(var(--blue));
+    color: hsl(0 0% 100%);
+  }
+
+  .odds-btn .odds-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.06em;
+    color: hsl(var(--muted-foreground));
+    text-transform: uppercase;
+  }
+
+  .odds-btn.selected .odds-label {
+    color: rgba(255,255,255,0.75);
+  }
+
+  .odds-value {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 1.1rem;
+    line-height: 1;
+    transition: color 0.1s;
+  }
+
+  /* ── LIVE FLASH ANIMATIONS ── */
+  @keyframes flashUp {
+    0%   { background: hsl(145 63% 49% / 0.35); color: hsl(var(--success)); }
+    80%  { background: hsl(145 63% 49% / 0.1); }
+    100% { background: transparent; color: inherit; }
+  }
+
+  @keyframes flashDown {
+    0%   { background: hsl(6 78% 57% / 0.35); color: hsl(var(--loss)); }
+    80%  { background: hsl(6 78% 57% / 0.1); }
+    100% { background: transparent; color: inherit; }
+  }
+
+  .flash-up   { animation: flashUp 1.5s ease forwards; }
+  .flash-down { animation: flashDown 1.5s ease forwards; }
+
+  /* ── LIVE BADGE ── */
+  .badge-live {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    color: hsl(var(--success));
+    border: 1px solid hsl(var(--success));
+    padding: 0.1rem 0.45rem;
+    border-radius: 2px;
+    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  .badge-live::before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    background: hsl(var(--success));
+    border-radius: 50%;
+    animation: pulse-dot 1.5s ease infinite;
+    flex-shrink: 0;
+  }
+
+  @keyframes pulse-dot {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%       { opacity: 0.4; transform: scale(0.7); }
+  }
+
+  /* ── STATUS BADGES ── */
+  .badge-upcoming {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    color: hsl(var(--muted-foreground));
+    border: 1px solid hsl(var(--border));
+    padding: 0.1rem 0.45rem;
+    border-radius: 2px;
+    text-transform: uppercase;
+  }
+
+  .badge-settled {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    color: hsl(var(--blue));
+    border: 1px solid hsl(var(--border-bright));
+    padding: 0.1rem 0.45rem;
+    border-radius: 2px;
+    text-transform: uppercase;
+  }
+
+  /* ── SECTION LABELS ── */
+  .section-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.16em;
+    color: hsl(var(--muted-foreground));
+    text-transform: uppercase;
+  }
+
+  /* ── TERMINAL ANIMATION ── */
+  .terminal-text {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    color: hsl(var(--success));
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0; }
+  }
+
+  .cursor-blink::after {
+    content: '█';
+    font-size: 0.65em;
+    margin-left: 1px;
+    animation: blink 0.75s step-end infinite;
+  }
+
+  /* ── SCORE DISPLAY ── */
+  .score-display {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+  }
+
+  /* ── MATCH SEPARATOR ── */
+  .match-divider {
+    border: none;
+    border-top: 1px solid hsl(var(--border));
+    margin: 0;
+  }
+
+  /* ── NAV TABS ── */
+  .nav-tab {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.65rem 1.1rem;
+    color: hsl(var(--muted-foreground));
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.15s;
+    white-space: nowrap;
+    background: transparent;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+  }
+
+  .nav-tab:hover { color: hsl(var(--foreground)); }
+  .nav-tab.active {
+    color: hsl(var(--yellow));
+    border-bottom-color: hsl(var(--yellow));
+  }
+
+  /* ── STAKE INPUT ── */
+  .stake-input {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    background: hsl(var(--surface));
+    border: 1px solid hsl(var(--border-bright));
+    color: hsl(var(--yellow));
+    padding: 0.6rem 0.85rem;
+    width: 100%;
+    outline: none;
+    text-align: right;
+    border-radius: var(--radius);
+    transition: border-color 0.15s;
+  }
+
+  .stake-input:focus { border-color: hsl(var(--yellow)); }
+  .stake-input::placeholder { color: hsl(var(--dim-foreground)); }
+
+  /* ── CTA PLACE BET ── */
+  .cta-place-bet {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-size: 1rem;
+    background: hsl(var(--blue));
+    color: hsl(0 0% 100%);
+    border: none;
+    padding: 0.9rem;
+    width: 100%;
+    cursor: pointer;
+    border-radius: var(--radius);
+    transition: background 0.12s, transform 0.08s;
+  }
+
+  .cta-place-bet:hover   { background: hsl(var(--primary-hover)); }
+  .cta-place-bet:active  { transform: scale(0.99); }
+  .cta-place-bet:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+  }
+
+  /* ── SIDEBAR SPORT ITEM ── */
+  .sport-item {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 0.55rem 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: hsl(var(--muted-foreground));
+    border-left: 2px solid transparent;
+    transition: all 0.12s;
+  }
+
+  .sport-item:hover {
+    color: hsl(var(--foreground));
+    background: hsl(var(--surface-raised) / 0.5);
+  }
+
+  .sport-item.active {
+    color: hsl(var(--yellow));
+    border-left-color: hsl(var(--yellow));
+    background: hsl(var(--surface-raised) / 0.4);
+  }
+
+  /* ── MARKET ROW ── */
+  .market-row {
+    padding: 1rem;
+    border-bottom: 1px solid hsl(var(--border));
+  }
+
+  .market-row:last-child { border-bottom: none; }
+
+  /* ── TRANSACTION ROW ── */
+  .tx-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.85rem 0;
+    border-bottom: 1px solid hsl(var(--border));
+  }
+
+  .tx-row:last-child { border-bottom: none; }
+
+  /* ── DATA TABLE ── */
+  .data-table th {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: hsl(var(--muted-foreground));
+    padding: 0.7rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid hsl(var(--border));
+  }
+
+  .data-table td {
+    font-family: 'Barlow', sans-serif;
+    font-size: 0.85rem;
+    padding: 0.8rem 1rem;
+    border-bottom: 1px solid hsl(var(--border) / 0.5);
+    vertical-align: middle;
+  }
+
+  /* ── STATUS PILL ── */
+  .pill-won  { color: hsl(var(--success)); font-weight: 600; }
+  .pill-lost { color: hsl(var(--loss));    font-weight: 600; }
+  .pill-open { color: hsl(var(--yellow));  font-weight: 600; }
+
+  /* ── GLOW EFFECT ON CTA ── */
+  @keyframes glowPulse {
+    0%, 100% { box-shadow: 0 0 8px hsl(210 77% 51% / 0.4); }
+    50%       { box-shadow: 0 0 18px hsl(210 77% 51% / 0.7); }
+  }
+
+  .glow-blue { animation: glowPulse 2s ease infinite; }
+
+  /* ── RISK INDICATOR ── */
+  .risk-low    { color: hsl(var(--success)); }
+  .risk-medium { color: hsl(var(--warning)); }
+  .risk-high   { color: hsl(var(--loss)); }
 }
